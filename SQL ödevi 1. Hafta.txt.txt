@@ -1,0 +1,47 @@
+
+
+# SQL ÖDEVİ - 1. Hafta
+
+## a. Belirli Kolonları Seçme
+Sorgu:
+SELECT FirstName, LastName, Salary FROM Employees;
+
+Açıklama:
+Bu sorgu, çalışanların sadece ad, soyad ve maaş bilgilerini getirir. Böylece gereksiz veri almadan yalnızca ihtiyacımız olan bilgileri çekmiş oluruz.
+
+---
+
+## b. DISTINCT Komutu ile Tekrarları Önleme
+Sorgu:
+SELECT DISTINCT Department FROM Employees;
+
+Açıklama:
+Burada, şirket içinde hangi departmanların bulunduğunu listelemek için DISTINCT kullanıyoruz. Eğer bir departmanda birden fazla çalışan varsa, bu departman sadece bir kez gösterilir.
+
+---
+
+## c. Belirli Bir Departmana Ait Çalışanları Listeleme
+Sorgu:
+SELECT * FROM Employees WHERE Department = 'IT';
+
+Açıklama:
+Bu sorgu, sadece IT departmanında çalışan kişileri getirir. WHERE koşulu sayesinde istediğimiz departmandaki çalışanları filtreleyebiliyoruz.
+
+---
+
+## d. Maaşa Göre Sıralama
+Sorgu:
+SELECT * FROM Employees ORDER BY Salary DESC;
+
+Açıklama:
+Çalışanları maaşlarına göre büyükten küçüğe sıralıyoruz. En yüksek maaşı alan kişi listenin başında olur.
+
+---
+
+## e. Kolonları Birleştirme (Concatenation)
+Sorgu:
+SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM Employees;
+
+Açıklama:
+Burada, FirstName ve LastName sütunlarını birleştirerek tam isim oluşturuyoruz. CONCAT fonksiyonuyla iki metni birleştirip yeni bir FullName sütunu oluşturuyoruz.
+
