@@ -1,1 +1,1 @@
-# SQL-devleri-
+# SQL-ödevleri
