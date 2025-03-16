@@ -1,0 +1,42 @@
+Bu ödevde Invoice (fatura) tablosu üzerinde çeşitli SQL sorguları yazmamız gerekiyor. Soruları tek tek ele alarak açıklamalarımı paylaşacağım.
+SELECT COUNT(*) 
+FROM Invoice
+WHERE customer_id IS NULL 
+  AND invoice_date IS NULL 
+  AND billing_address IS NULL 
+  AND billing_city IS NULL 
+  AND billing_state IS NULL 
+  AND billing_country IS NULL 
+  AND billingpostal_code IS NULL 
+  AND total IS NULL;
+• COUNT(*) fonksiyonu, satırları sayar.
+• WHERE şartında tüm kolonların NULL olup olmadığını kontrol ediyoruz.
+• Tüm kolonları NULL olan kaç kayıt olduğunu sayıyoruz.
+-- Sonuç: 3
+ 
+2.Bu soruda, total sütunundaki değerleri 2 ile çarparak yeni bir sütun eklememiz ve sıralamamız isteniyor. Bunun için şu sorguyu yazıyorum :
+SELECT *,
+      total * 2 AS new_total
+FROM Invoice
+ORDER BY new_total DESC;
+• SELECT * ifadesi ile tüm sütunları getiriyoruz.
+• total * 2 AS new_total kısmı, total değerini ikiyle çarparak “new_total” adında yeni bir sütun oluşturuyor.
+• ORDER BY new_total DESC sayesinde sonuçları büyükten küçüğe sıralıyoruz
+ 
+3. Bu soruda, billing_address (fatura adresi) bilgisini düzenlememiz ve 2013 yılının Ağustos ayına ait kayıtları seçmemiz isteniyor. Bunun için şu sorguyu yazıyorum :
+SELECT invoice_id,
+      customer_id,
+      invoice_date,
+      billing_address,
+      LEFT(billing_address, 3) || '...' || RIGHT(billing_address, 4) AS open_address,
+      total
+FROM Invoice
+WHERE EXTRACT(YEAR FROM invoice_date) = 2013
+ AND EXTRACT(MONTH FROM invoice_date) = 8;
+ 
+• LEFT(billing_address, 3) adresin ilk 3 karakterini alır.
+• RIGHT(billing_address, 4) adresin son 4 karakterini alır.
+• || '...' || ile bu iki kısmı birleştiriyoruz ve "open_address" adında yeni bir sütun oluşturuyoruz.
+• EXTRACT(YEAR FROM invoice_date) = 2013 ile 2013 yılına ait faturaları seçiyoruz.
+• EXTRACT(MONTH FROM invoice_date) = 8 ile Ağustos ayındaki kayıtları filtreliyoruz.
+ 
