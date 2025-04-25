@@ -1,4 +1,4 @@
-# SQL-ödevleri
+Çin# SQL-ödevleri
 1. Members
 CREATE TABLE Members (
     member_id SERIAL PRIMARY KEY,
@@ -62,4 +62,6 @@ CREATE TABLE BlogPosts (
     title VARCHAR(255),
     content TEXT,
     post_date TIMESTAMP NOT NULL
+
+
 
