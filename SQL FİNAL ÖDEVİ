@@ -62,6 +62,7 @@ CREATE TABLE BlogPosts (
     title VARCHAR(255),
     content TEXT,
     post_date TIMESTAMP NOT NULL
+   
 
 
 
