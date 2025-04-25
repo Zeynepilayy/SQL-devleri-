@@ -1,4 +1,4 @@
-Çin# SQL-ödevleri
+# SQL-ödevleri
 1. Members
 CREATE TABLE Members (
     member_id SERIAL PRIMARY KEY,
